@@ -68,7 +68,6 @@ class ZlecenieAdmin(admin.ModelAdmin):
 
 @admin.register(Marszruta)
 class MarszrutaAdmin(admin.ModelAdmin):
-	fields = ('nazwa', 'id',)             #ustawia kolejność w trybie edycji
 	list_display = ('id', 'nazwa', 'get_order_name', 'get_operacja',)
 
 	def get_order_name(self, obj):  #metoda do pobrania nr zlecenia
@@ -84,5 +83,5 @@ class MarszrutaAdmin(admin.ModelAdmin):
 
 @admin.register(Operacje_technologiczne)
 class Operacje_technologiczneAdmin(admin.ModelAdmin):
-	list_display = ('nazwa', 'symbol', 'czas_przezbrajania')
+	list_display = ('nazwa', 'symbol', 'czas_przezbrajania',)
 	

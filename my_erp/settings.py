@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'kadry',
+    'raport',
     'imagekit' #aplikacja do miniaturek
 ]
 
