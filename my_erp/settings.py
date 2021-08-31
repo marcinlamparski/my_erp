@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'kadry',
     'raport',
+    'projektant',
     'imagekit' #aplikacja do miniaturek
 ]
 

@@ -8,6 +8,8 @@ from .models import Zlecenie
 from .models import Moja_Firma
 from .models import Marszruta
 from .models import Operacje_technologiczne
+from .models import Czasy_jednostkowe
+
 from imagekit.admin import AdminThumbnail #pakiet do tworzenia miniatur
 
 
@@ -84,4 +86,8 @@ class MarszrutaAdmin(admin.ModelAdmin):
 @admin.register(Operacje_technologiczne)
 class Operacje_technologiczneAdmin(admin.ModelAdmin):
 	list_display = ('nazwa', 'symbol', 'czas_przezbrajania',)
+
+@admin.register(Czasy_jednostkowe)
+class Operacje_technologiczneAdmin(admin.ModelAdmin):
+	list_display = ('marszruta', 'czas_jednostkowy', 'id')
 	

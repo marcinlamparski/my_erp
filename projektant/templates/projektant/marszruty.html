@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<h2> Marszruty </h2>
+<table bgcolor="#FDE456", border="black", frame="1", style="border-collapse: collapse",>
+	<thead>
+		<tr>
+			<th>Nr</th>
+			<th>Nazwa</th>
+			<th>Operacja</th>
+			<th>Zlecenie</th>
+	
+		</tr>
+	</thead>
+
+	<tbody>
+		
+		<tr>
+
+{%  for marszruty in marszruty %}
+
+			<td>{{marszruty.id}}</td>
+			<td>{{marszruty.nazwa}}</td>
+			<td>{{marszruty.operacja}}</td>
+				
+			<td>{{marszruty.zlecenie.id}}</td>
+
+
+
+
+		</tr>
+	
+{% endfor %}
+</tbody>
+
+{% endblock content %}

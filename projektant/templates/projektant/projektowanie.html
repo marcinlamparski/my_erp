@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+<h2> Lista zleceń</h2>
+<table bgcolor="#FDE456", border="black", frame="1", style="border-collapse: collapse">
+	<thead>
+		<tr>
+			<th>Nr</th>
+			<th>Nazwa</th>
+			<th>Nr proj.</th>
+			<th>Nazwa projektu</th>
+			<th>Wartość</th>
+			<th>Data dodania</th>
+			
+
+		</tr>
+	</thead>
+
+	<tbody>
+		
+		<tr>
+
+{%  for zlecenia in zlecenia %}
+
+			<td>{{zlecenia.id}}</td>
+			<td>{{zlecenia.nazwa}}</td>
+			<td>{{zlecenia.nr_projektu.id}}</td>
+			<td>{% for projekty in projekty %}
+					{% if projekty == zlecenia.nr_projektu %} 
+						{{projekty.nazwa}} {% endif %}
+				{% endfor %}</td>
+			<td>{{zlecenia.wartosc}}</td>
+			<td>{{zlecenia.data_dodania}}</td>
+
+
+
+
+		</tr>
+	
+{% endfor %}
+</tbody>
+
+{% endblock content %}

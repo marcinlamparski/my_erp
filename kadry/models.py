@@ -88,16 +88,17 @@ class Projekt(models.Model):
 	szef_projektu = models.ForeignKey(Pracownik, on_delete=models.CASCADE, null=True, verbose_name = 'szef projektu')
 	data_dodania = models.DateTimeField(auto_now_add=True)
 	ostatnia_modyfikacja = models.DateField(auto_now=True)
+	wartosc = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 	
 	class Meta:
 		verbose_name_plural = "Projekty"
 
 class Zlecenie(models.Model):
-	#numer = models.CharField(max_length=50)
 	nazwa = models.CharField(max_length=50)
 	data_dodania = models.DateTimeField(auto_now_add=True)
 	ostatnia_modyfikacja = models.DateField(auto_now=True)
 	nr_projektu = models.ForeignKey(Projekt, on_delete=models.CASCADE, null=True)
+	wartosc = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
 	class Meta:
 		verbose_name_plural = "Zlecenia"
@@ -118,13 +119,15 @@ class Marszruta(models.Model):
 	nazwa = models.CharField(max_length=50)
 	zlecenie = models.ForeignKey(Zlecenie, on_delete=models.CASCADE, null=True)
 	operacja = models.ManyToManyField(Operacje_technologiczne)
-	#czasy = ArrayField(
-	#	ArrayField(
-	#		models.IntegerField(default=0, null=True),
-	#		size=8,
-	#	),
-	#	size=8,
-	#)
+	
 	class Meta:
 		verbose_name_plural = "Marszruty"
 	
+
+class Czasy_jednostkowe(models.Model):
+	czas_jednostkowy = models.DecimalField(default=0, max_digits=3, decimal_places=2, help_text = 'Czas jednostkowy podawany w godzinach')
+	operacja = models.ManyToManyField(Operacje_technologiczne)
+	marszruta = models.ForeignKey(Marszruta, on_delete=models.CASCADE)
+
+	class Meta:
+		verbose_name_plural = "Czasy jednostkowe"
